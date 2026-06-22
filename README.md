@@ -106,7 +106,7 @@ transit-explorer/
 ## Quick start
 
 ```bash
-git clone <repo-url> && cd transit-explorer
+git clone https://github.com/timnie2019/transit-explorer && cd transit-explorer
 python -m venv venv && source venv/bin/activate
 pip install -r requirements.txt
 
