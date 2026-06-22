@@ -1,0 +1,115 @@
+{
+  "trip": {
+    "id": "union_barrie",
+    "from": "Union Station GO",
+    "to": "Barrie South GO",
+    "line": "Barrie Line",
+    "line_color": "#00853F",
+    "departure": "3:47 PM",
+    "arrival": "5:02 PM",
+    "wait_minutes": 42,
+    "platform": "Platform 7"
+  },
+  "discover": [
+    {
+      "id": "d1",
+      "type": "video",
+      "title": "Barrie's waterfront in 90 seconds",
+      "source": "Barrie Tourism",
+      "duration": "1:32",
+      "accent": "#1565C0",
+      "description": "Kempenfelt Bay, the marina, and Centennial Park — all a 12-min walk from Barrie South GO.",
+      "tags": ["waterfront", "outdoor", "free"]
+    },
+    {
+      "id": "d2",
+      "type": "article",
+      "title": "5 things to do in downtown Barrie this weekend",
+      "source": "Georgian Bay Life",
+      "duration": "3 min read",
+      "accent": "#2E7D32",
+      "description": "Farmer's market, the MacLaren Art Centre, and the best patio on Dunlop Street.",
+      "tags": ["weekend", "arts", "food"]
+    },
+    {
+      "id": "d3",
+      "type": "video",
+      "title": "Hidden gems: Barrie's Allandale neighbourhood",
+      "source": "Tourism Simcoe County",
+      "duration": "2:14",
+      "accent": "#6A1B9A",
+      "description": "A quiet historic district most visitors skip — 3 min walk from the GO station.",
+      "tags": ["history", "local", "walk"]
+    }
+  ],
+  "eat": [
+    {
+      "id": "e1",
+      "name": "The Cellar Pub & Grill",
+      "cuisine": "Canadian pub",
+      "rating": 4.4,
+      "reviews": 1203,
+      "price": 2,
+      "walk_from_go": "11 min",
+      "hours": "Open until 1 AM",
+      "highlight": "Butter chicken poutine. Open since 1994. Local institution.",
+      "accent": "#795548"
+    },
+    {
+      "id": "e2",
+      "name": "Tara's Shoreline",
+      "cuisine": "Waterfront dining",
+      "rating": 4.6,
+      "reviews": 874,
+      "price": 3,
+      "walk_from_go": "17 min",
+      "hours": "Open until 9 PM",
+      "highlight": "Lake Simcoe whitefish, bay views, great for a slow dinner.",
+      "accent": "#01579B"
+    },
+    {
+      "id": "e3",
+      "name": "Hurley's Bakery & Cafe",
+      "cuisine": "Bakery & coffee",
+      "rating": 4.5,
+      "reviews": 612,
+      "price": 1,
+      "walk_from_go": "6 min",
+      "hours": "Open until 5 PM",
+      "highlight": "Grab a butter tart for the ride home. Barrie's best bakery since 1987.",
+      "accent": "#E65100"
+    }
+  ],
+  "shop": [
+    {
+      "id": "s1",
+      "name": "Simcoe County Craft Co.",
+      "type": "Local artisan goods",
+      "price_range": "$15 – $120",
+      "highlight": "Handmade ceramics, prints, and candles from 40 Barrie-area artists.",
+      "accent": "#4A148C",
+      "tags": ["ceramics", "prints", "gifts"],
+      "promoted": false
+    },
+    {
+      "id": "s2",
+      "name": "Kempenfelt Bay Roasters",
+      "type": "Local coffee & merch",
+      "price_range": "$18 – $38",
+      "highlight": "Small-batch roasts from Barrie's favourite independent café. Ships Canada-wide.",
+      "accent": "#3E2723",
+      "tags": ["coffee", "local", "gifts"],
+      "promoted": true
+    },
+    {
+      "id": "s3",
+      "name": "Georgian Bay Outfitters",
+      "type": "Outdoor & lifestyle",
+      "price_range": "$30 – $200",
+      "highlight": "Barrie-branded hoodies, water bottles, and canoe gear. Takes you back to the bay.",
+      "accent": "#1B5E20",
+      "tags": ["outdoor", "apparel", "lifestyle"],
+      "promoted": false
+    }
+  ]
+}

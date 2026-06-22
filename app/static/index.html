@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Transit Explorer</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="shell">
+
+    <div id="status-bar"><span>9:41</span><span>&#9679;&#9679;&#9679;</span></div>
+
+    <!-- ── Screen: Nearby ───────────────────────────────────── -->
+    <div id="screen-nearby" class="screen active">
+      <div class="s-header" id="nearby-header">
+        <div class="s-header-top">
+          <div>
+            <div class="station-name" id="nearby-station-name">North York Centre</div>
+            <div class="station-char" id="nearby-station-char">Arts, culture &amp; civic core</div>
+          </div>
+          <div class="line-badge ttc" id="nearby-line-badge">Line 1</div>
+        </div>
+        <div class="station-chips" id="station-chips"></div>
+      </div>
+
+      <div class="budget-bar">
+        <button class="bud-btn active" data-b="quick">Quick <em>&lt;5 min</em></button>
+        <button class="bud-btn" data-b="explore">Explore <em>30 min</em></button>
+        <button class="bud-btn" data-b="exp">Experience <em>1 hr+</em></button>
+      </div>
+
+      <div class="budget-desc" id="budget-desc-text"></div>
+
+      <div class="scroll-area" id="nearby-list"></div>
+    </div>
+
+    <!-- ── Screen: Plan ─────────────────────────────────────── -->
+    <div id="screen-plan" class="screen">
+      <div class="s-header plain">
+        <div class="s-header-top">
+          <div class="station-name">Trip planner</div>
+          <div class="station-char">Finch &rarr; Union Station</div>
+        </div>
+      </div>
+
+      <div class="route-summary">
+        <div class="rs-row"><span class="rs-dot green"></span><span class="rs-place">Finch</span></div>
+        <div class="rs-stem"></div>
+        <div class="rs-row"><span class="rs-dot red"></span><span class="rs-place">Union Station</span></div>
+        <div class="rs-meta">
+          <span class="rs-chip ttc-bg">Line 1</span>
+          <span class="rs-val">34 min</span>
+          <span class="rs-muted">departs 3:41 PM</span>
+        </div>
+      </div>
+
+      <div class="section-label">Stops along your route</div>
+
+      <div class="stop-list" id="stop-list">
+        <div class="stop-row main-stop">
+          <div class="stop-pip filled"></div>
+          <div class="stop-info"><div class="stop-name">Finch</div><div class="stop-sub">board here · 3:41 PM</div></div>
+        </div>
+
+        <div class="stop-row detour-stop" id="detour-stop" onclick="toggleDetour()">
+          <div class="stop-pip highlight"></div>
+          <div class="stop-info">
+            <div class="stop-name" style="color:var(--ttc)">North York Centre</div>
+            <div class="stop-sub">3:44 PM</div>
+          </div>
+          <div class="stop-time" style="color:var(--ttc)">3:44</div>
+        </div>
+
+        <!-- Detour card (collapsed by default) -->
+        <div class="detour-card" id="detour-card">
+          <div class="dc-pill"><span>&#10024;</span> Worth a detour here</div>
+          <div class="dc-venue-row">
+            <div class="dc-icon">🎭</div>
+            <div>
+              <div class="dc-name">Meridian Arts Centre</div>
+              <div class="dc-meta">★ 4.5 · 934 reviews · 2 min walk</div>
+              <div class="dc-tonight">Tonight: Stomp — The Musical · 8 PM</div>
+            </div>
+          </div>
+          <div class="dc-costs">
+            <span class="cost-chip amber"><span>&#9201;</span> adds ~18 min</span>
+            <span class="cost-chip blue"><span>&#128652;</span> next train: 9 min</span>
+          </div>
+          <div id="detour-expand" class="detour-expand hidden">
+            <div class="cost-grid">
+              <div class="cost-cell"><div class="cc-label">Detour adds</div><div class="cc-val red">~18 min</div></div>
+              <div class="cost-cell"><div class="cc-label">Walk from exit</div><div class="cc-val">2 min</div></div>
+              <div class="cost-cell"><div class="cc-label">Arrive Union</div><div class="cc-val">4:33 PM</div></div>
+              <div class="cost-cell"><div class="cc-label">Next train south</div><div class="cc-val">9 min wait</div></div>
+            </div>
+            <div class="detour-tip">Rush tickets available day-of at the box office. Lobby entry is free even without a ticket.</div>
+            <div class="dc-actions">
+              <button class="btn-primary">Update my trip</button>
+              <button class="btn-sec" onclick="event.stopPropagation();toggleDetour()">Skip detour</button>
+            </div>
+            <div class="next-trains-row">
+              <span class="nt-label">Next southbound</span>
+              <span class="nt-chip soon">now</span>
+              <span class="nt-chip">9 min</span>
+              <span class="nt-chip">17 min</span>
+              <span class="nt-chip">26 min</span>
+            </div>
+          </div>
+          <button class="dc-toggle-btn" id="dc-toggle-btn" onclick="event.stopPropagation();toggleDetour()">See detour details &#8595;</button>
+        </div>
+
+        <div class="stop-row">
+          <div class="stop-pip transfer"></div>
+          <div class="stop-info"><div class="stop-name">Sheppard-Yonge</div><div class="stop-sub">interchange · Line 4</div></div>
+          <div class="stop-time">3:46</div>
+        </div>
+        <div class="stop-row">
+          <div class="stop-pip"></div><div class="stop-info"><div class="stop-name">Bloor-Yonge</div></div>
+          <div class="stop-time">3:55</div>
+        </div>
+        <div class="stop-row main-stop">
+          <div class="stop-pip filled red-pip"></div>
+          <div class="stop-info"><div class="stop-name">Union Station</div><div class="stop-sub">arrives 4:15 PM</div></div>
+        </div>
+      </div>
+      <div style="height:20px"></div>
+    </div>
+
+    <!-- ── Screen: GO Transit ───────────────────────────────── -->
+    <div id="screen-go" class="screen">
+      <div class="s-header go-header">
+        <div class="s-header-top">
+          <div>
+            <div class="station-name">Heading to Barrie</div>
+            <div class="station-char">Barrie Line &middot; Platform 7 &middot; departs 3:47 PM</div>
+          </div>
+          <div class="line-badge go-badge">GO</div>
+        </div>
+        <div class="wait-bar-wrap">
+          <div class="wait-label"><span class="wait-num" id="wait-num">42</span> min until boarding</div>
+          <div class="wait-track"><div class="wait-fill" id="wait-fill" style="width:70%"></div></div>
+        </div>
+      </div>
+
+      <div class="go-tabs" id="go-tabs">
+        <button class="go-tab active" data-go="discover">Discover Barrie</button>
+        <button class="go-tab" data-go="eat">Eat &amp; drink</button>
+        <button class="go-tab" data-go="shop">Shop local</button>
+      </div>
+
+      <div class="go-tab-desc" id="go-tab-desc">Preview your destination while you wait.</div>
+
+      <div class="scroll-area" id="go-list"></div>
+    </div>
+
+    <!-- ── Bottom nav ───────────────────────────────────────── -->
+    <nav id="bottom-nav">
+      <button class="nav-btn active" data-target="nearby">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 2v2M12 20v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M2 12h2M20 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+        <span>Nearby</span>
+      </button>
+      <button class="nav-btn" data-target="plan">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        <span>Plan</span>
+      </button>
+      <button class="nav-btn" data-target="go">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/></svg>
+        <span>GO Transit</span>
+      </button>
+    </nav>
+
+    <!-- ── POI Detail sheet ─────────────────────────────────── -->
+    <div id="detail-sheet" class="sheet hidden">
+      <div class="sheet-handle"></div>
+      <div id="detail-content"></div>
+    </div>
+    <div id="sheet-backdrop" class="backdrop hidden" onclick="closeDetail()"></div>
+
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>

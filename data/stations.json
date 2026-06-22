@@ -1,0 +1,40 @@
+{
+  "stations": [
+    {
+      "id": "finch",
+      "name": "Finch",
+      "line": "Line 1 Yonge-University",
+      "lat": 43.7807,
+      "lng": -79.4150,
+      "address": "5765 Yonge St, North York, ON M2M 3T6",
+      "character": "Community & Dining Hub",
+      "description": "Finch is a vibrant multicultural hub anchored by a major bus terminal. Rich in Korean, Chinese, and South Asian restaurants — perfect for food tourism.",
+      "busTerminal": true,
+      "walkingRadius_m": 800
+    },
+    {
+      "id": "north_york_centre",
+      "name": "North York Centre",
+      "line": "Line 1 Yonge-University",
+      "lat": 43.7664,
+      "lng": -79.4141,
+      "address": "5100 Yonge St, North York, ON M2N 5W1",
+      "character": "Arts, Culture & Civic Core",
+      "description": "The civic heart of North York. Mel Lastman Square, the Toronto Public Library North York branch, Meridian Arts Centre, and City Hall are all steps away.",
+      "busTerminal": false,
+      "walkingRadius_m": 700
+    },
+    {
+      "id": "sheppard_yonge",
+      "name": "Sheppard-Yonge",
+      "line": "Line 1 Yonge-University / Line 4 Sheppard",
+      "lat": 43.7615,
+      "lng": -79.4099,
+      "address": "4 Sheppard Ave E, North York, ON M2N 5X5",
+      "character": "Urban Retail & Connectivity Node",
+      "description": "A major interchange station connecting two subway lines. Gateway to the Yonge-Sheppard Centre mall, Whole Foods, and upscale dining. Busiest pedestrian flow in North York.",
+      "busTerminal": false,
+      "walkingRadius_m": 600
+    }
+  ]
+}
